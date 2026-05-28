@@ -1,8 +1,9 @@
 Integration Mapping – Sales Order Transaction (ORDERJUAL)
 Overview
 
-Project ini merupakan implementasi integrasi transaksi Sales Order antara aplikasi SFA (Sales Force Automation) dengan sistem ERP/SAP menggunakan format JSON mapping.
-Tujuan utama integrasi adalah memastikan data order dari salesman dapat diterima dan diproses secara otomatis di backend ERP secara konsisten, valid, dan real-time.
+Project ini merupakan implementasi integrasi transaksi Sales Order antara aplikasi SFA (Sales Force Automation) dengan sistem ERP/SAP menggunakan format JSON Mapping.
+
+Tujuan utama integrasi ini adalah memastikan data order dari salesman dapat diterima dan diproses secara otomatis di backend ERP secara konsisten, valid, dan real-time.
 
 Project Information
 Item	Description
@@ -20,7 +21,7 @@ Salesman Input Order
         ↓
 SFA Generate JSON Payload
         ↓
-Integration Middleware/API
+Integration Middleware / API
         ↓
 Validation & Mapping
         ↓
@@ -41,13 +42,11 @@ Promo Information
 Branch & Salesman Mapping
 JSON Structure
 
-Struktur terdiri dari 2 bagian utama:
+Struktur payload terdiri dari 2 bagian utama:
 
 1. Header
 
 Berisi informasi utama transaksi order.
-
-Contoh field:
 
 Field	Description	SAP Mapping
 ORDERNO	Nomor Order SFA	IHREZ
@@ -64,8 +63,6 @@ TGLKIRIM	Delivery Date	VDATU
 
 Berisi item produk yang diorder.
 
-Contoh field:
-
 Field	Description	SAP Mapping
 SEQPCODE	Item Sequence	POSNR
 PCODE	Product Code	MATNR
@@ -78,17 +75,16 @@ DISKONVALUE	Discount Value	VADSC
 KODE_PROMO	Promo Code	KSFGD
 PROMOTVALUE	Promo Value	VAFGD
 Validation Rules
-
-Beberapa validasi yang diterapkan:
-
 Mandatory Validation
 
-Field wajib:
+Field wajib yang harus tersedia:
 
+Header
 ORDERNO
 CUSTNO
 SLSNO
 TGLORDER
+Detail
 PCODE
 QTY
 SELLPRICE
@@ -107,19 +103,19 @@ Technical Highlights
 Features Implemented
 Data Mapping
 
-Melakukan translasi field dari SFA ke SAP field naming convention.
+Melakukan translasi field dari SFA ke standar field SAP.
 
 Mandatory Checker
 
-Memastikan field wajib tidak kosong.
+Memastikan seluruh field wajib tidak kosong.
 
 Type Validation
 
-Validasi tipe data number/date/string.
+Validasi tipe data seperti string, number, dan date.
 
 Discount & Promo Handling
 
-Support multiple skema discount dan promo.
+Mendukung multiple skema discount dan promo.
 
 Delivery Scheduling
 
@@ -127,7 +123,7 @@ Mendukung requested delivery date.
 
 Branch Based Processing
 
-Support multi cabang menggunakan KODECABANG.
+Mendukung multi cabang menggunakan KODECABANG.
 
 Example JSON Payload
 {
@@ -153,11 +149,11 @@ Example JSON Payload
 Challenges
 Complex Mapping
 
-Field mapping harus disesuaikan dengan standar SAP naming.
+Field mapping harus disesuaikan dengan standar naming SAP.
 
 Data Consistency
 
-Menjaga sinkronisasi data antara mobile dan ERP.
+Menjaga sinkronisasi data antara aplikasi mobile dan ERP.
 
 Validation Accuracy
 
@@ -168,12 +164,12 @@ Multi Branch Logic
 Handling transaksi dari banyak cabang dan salesman.
 
 Result & Impact
-Benefits
+Business Benefits
 Mengurangi input manual
 Mempercepat proses order
 Mengurangi human error
-Real-time transaksi ke ERP
-Mendukung monitoring sales order
+Mendukung transaksi real-time ke ERP
+Mempermudah monitoring sales order
 Technical Impact
 Faster order processing
 Better data integrity
@@ -188,18 +184,16 @@ SAP ERP	Target System
 Middleware Integration	Data Transformation
 My Role
 SQL Developer / Integration Developer
-
-Responsibilities:
-
+Responsibilities
 Membuat mapping JSON transaksi
 Menyusun validation rule
 Implementasi data transformation
 Optimasi query processing
 Testing payload integration
 Troubleshooting failed transaction
-Key Achievement
+Key Achievements
 
 ✅ Berhasil membuat struktur mapping transaksi order yang scalable
 ✅ Mendukung integrasi multi cabang dan multi item
 ✅ Mengurangi kegagalan transaksi akibat invalid data
-✅ Mempermudah proses monitoring dan troubleshooting integrasi ERP/SAP
+✅ Mempermudah monitoring dan troubleshooting integrasi ERP/SAP
